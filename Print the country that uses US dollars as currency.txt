@@ -1,0 +1,17 @@
+<script>        
+        let request = new XMLHttpRequest();
+        request.open("GET", "https://restcountries.com/v2/all");
+        request.send();
+        request.onload = function(){
+            let result = JSON.parse(request.response);
+            for(i=0;i<result.length;i++){
+                if(result[i].currencies != undefined ){       
+                    for(j=0;j<result[i].currencies.length;j++){
+                        if(result[i].currencies[j].code == "USD"){
+                            console.log(result[i].name);
+                        }
+                    }
+                }
+            }
+        }
+    </script>
